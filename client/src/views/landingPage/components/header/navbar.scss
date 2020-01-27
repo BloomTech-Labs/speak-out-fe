@@ -6,11 +6,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: rgb(240, 240, 240);
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-  // position: fixed;
-  // width: 100%;
-  // z-index: 20;
 
   .navbar-left {
     .logo {
@@ -32,17 +29,18 @@
     a {
       margin-right: 40px;
       font-size: 18px;
-      color: #05293E;
+      color: black;
     }
 
     a:hover {
       cursor: pointer;
     }
 
-    .button {
-      border: 0.8px solid #C73642;
-      color: #C73642;
-      padding: 5px 10px 5px 10px;
+    button {
+      border: none;
+      color: white;
+      background-color: #EC404E;
+      padding: 10px;
       font-size: 18px;
       margin-right: 20px;
       border-radius: 3px;

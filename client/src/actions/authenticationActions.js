@@ -13,17 +13,16 @@ export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
-export const loggedIn = (history, location) => {
+export const loggedIn = (history) => {
   return dispatch => {
     dispatch({ type: LOGGEDIN_START });
     
     axios 
       .get('https://speak-out-be-staging.herokuapp.com/user')
       .then(res => {
-        console.log(res.data)
-        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data})
-        if (!res.data.authenticated && location.pathname === "/dashboard") {
-          history.push('/login')
+        dispatch({ type: LOGGEDIN_SUCCESS, payload: res.data })
+        if (!res.data.authenticated) {
+          history.push('/')
         } else {
           history.push('/dashboard')
         }
@@ -44,6 +43,7 @@ export const logIn = (user, history) => {
       .post('https://speak-out-be-staging.herokuapp.com/login', user)
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+        console.log('LOGIN SUCCESS: ', res)
         history.push('/dashboard');
       })
       .catch(err => {

@@ -1,27 +1,12 @@
-import React, { useState } from 'react';
-import StaffTable from './StaffTable';
-import StaffCard from './staffCard/StaffCard';
+import React from 'react';
 
-const Staff = props => {
-  const [staffView, setStaffView] = useState("staffTableView");
-  const [staffID, setStaffID] = useState('')
-  
+function Staff() {
+
   return (
-    <>
-        {staffView === "staffTableView" ? < StaffTable 
-                staffView={staffView}
-                setStaffView={setStaffView} 
-                staffID={staffID}
-                setStaffID={setStaffID}
-                /> 
-        :staffView === "staffCardView" ? <StaffCard 
-              setStaffView={setStaffView} 
-              staffID={staffID}
-              staffView={staffView}
-              
-                 /> : null}
-    </>
+    <div>
+      Staff
+    </div>
   )
-};
+}
 
 export default Staff;

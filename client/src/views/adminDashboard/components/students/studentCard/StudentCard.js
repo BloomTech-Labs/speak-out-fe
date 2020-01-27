@@ -1,69 +1,68 @@
-
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getStudentById, toggleEditComponent } from '../../../../../actions';
 import { withRouter, Link } from 'react-router-dom';
 import StudentInformationTab from './StudentInformationTab';
-import StudentCoursesTab from './StudentCoursesTab';
 import { Tab } from 'semantic-ui-react';
-import { Header, Image, Icon } from 'semantic-ui-react'
-import StudentProgressTab from '../studentProgress/StudentProgressTab';
-
-
 import 'antd/dist/antd.css';
-import '../../mainStyle/mainCard.scss'
+import './StudentCard.css';
+import './StudentInformationTab.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const StudentCard = props => {
     useEffect(() => {
-        props.getStudentById(props.studentID)
+      console.log('STUDENT CARD props: ', props)
+        props.getStudentById(props.match.params.id)
     }, [])
 
-    const studentPanes = [
+    const panes = [
         {
             menuItem: 'STUDENT INFORMATION',
-            render: () => <Tab.Pane attached={false}><StudentInformationTab studentID={props.studentID} /></Tab.Pane>,
+            render: () => <Tab.Pane attached={false}><StudentInformationTab /></Tab.Pane>,
         },
         {
-            menuItem: 'COURSES',
-            render: () => <Tab.Pane attached={false}>{<StudentCoursesTab studentID={props.studentID} />}</Tab.Pane>,
+            menuItem: 'ENROLLMENT',
+            render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
         },
         {
-            menuItem: 'PROGRESS',
-            render: () => <Tab.Pane attached={false}><StudentProgressTab studentID={props.studentID} /></Tab.Pane>,
+            menuItem: 'ATTENDANCE',
+            render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
+        },
+        {
+            menuItem: 'BILLING',
+            render: () => <Tab.Pane attached={false}>Tab 4 Content</Tab.Pane>,
         },
     ]
 
     const goBack = () => {
-        if (props.studentView === 'studentCardView') {
-            props.setStudentView('studentTableView')
+        console.log("props", props)
+        if(!props.isEditing){
+            props.history.goBack();
+        } else {
+            props.toggleEditComponent()
         }
     }
 
     return (
         <div>
-                <div className="back-button" onClick={goBack} style={{ cursor: "pointer", width: "10%" }}>
-                    <Icon name='angle left' />
+            <div className="student-card">
+                <div className="back-button" onClick={goBack} style={{cursor:"pointer"}}
+>
+                    <FontAwesomeIcon icon='angle-left' size='lg' color='gray'/> {''}
                     Back
+                    
                     </div>
-                <div className='card-title'>
-
-                    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' circular size='small' />
-
-                    <Header as='h2'>
-                        {props.studentById.first_name} {props.studentById.additional_names}
-                        <div className="headerDiv">
-                            <div>
-                                <div className="headerSeparateDiv">CPR # {props.studentById.cpr}</div>
-                                <div className="headerSeparateDiv">STUDENT ID {props.studentById.id}</div>
-                            </div>
-                        </div>
-
-                    </Header>
+                <div className='student-title'>
+                    <h2>{props.studentById.first_name}</h2>
+                    <p>CPR: {props.studentById.cpr}</p>
+                    <p>Student ID: {props.studentById.id}</p>
                 </div>
-                <Tab menu={{ secondary: true, pointing: true }} panes={studentPanes} />
-                
+             <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
+            </div>
         </div>
-
+        
     )
 }
 
@@ -72,7 +71,7 @@ const mapStateToProps = state => {
     return {
         isLoading: state.studentByIdReducer.isLoading,
         studentById: state.studentByIdReducer.studentById,
-        isEditing: state.studentByIdReducer.isEditing,
+        isEditing: state.studentByIdReducer.isEditting,
     };
 };
 

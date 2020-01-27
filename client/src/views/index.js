@@ -11,7 +11,7 @@ function Index(props) {
       return (
         <AdminDashboard />
       )
-  } else if (props.user.username === 'family' || 'Ann') {
+  } else if (props.user.username === 'parent') {
       return (
         <ParentDashboard />
       )
@@ -19,10 +19,8 @@ function Index(props) {
       return (
         <StaffDashboard />
       )
-    } else {
-      return 
     }
-  } 
+  }
 }
 
 const mapStateToProps = state => {

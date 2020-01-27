@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ContactUs() {
+function Payments() {
 
   return (
     <div>
-      Contact Us
+      Payments
     </div>
   )
 }
 
-export default ContactUs;
+export default Payments;

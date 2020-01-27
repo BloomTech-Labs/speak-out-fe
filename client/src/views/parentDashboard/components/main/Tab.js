@@ -13,6 +13,7 @@ const TabWrap = styled.div`
 function Tab({ tab, navigation, setNavigation, tabColor, setTabColor, selected, setSelected }) {
 
   const handleClick = (tab) => {
+    console.log("click")
     setSelected(tab.toLowerCase())
     setNavigation(tab.toLowerCase())
   }
