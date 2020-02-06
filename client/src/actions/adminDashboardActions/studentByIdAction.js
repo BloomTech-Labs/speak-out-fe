@@ -5,7 +5,7 @@ export const FETCH_STUDENTBYID_FAILURE = 'FETCH_STUDENTBYID_FAILURE';
 export const getStudentById = id => dispatch => {
   dispatch({ type: FETCH_STUDENTBYID_START });
   axios
-    .get(`http://localhost:4000/student/${id}`)
+    .get(`https://speakout-lambda.herokuapp.com/student/${id}`)
     .then(res => {
       dispatch({
         type: FETCH_STUDENTBYID_SUCCESS,
@@ -42,7 +42,7 @@ export const editStudentById = (student_id, state) => dispatch => {
   // let state1 = {...state, ...obj1 }
   axios
     .put(
-      `http://localhost:4000/student/${student_id}`,
+      `https://speakout-lambda.herokuapp.comstudent/${student_id}`,
       state
     )
     .then(res => {
@@ -64,7 +64,7 @@ export const DELETE_STUDENTBYID_FAILURE = 'DELETE_STUDENTBYID_FAILURE';
 export const deleteStudentById = id => dispatch => {
   dispatch({ type: DELETE_STUDENTBYID_START });
   axios
-    .put(`http://localhost:4000/student/${id}`)
+    .put(`https://speakout-lambda.herokuapp.comstudent/${id}`)
     .then(res => {
       dispatch({
         type: DELETE_STUDENTBYID_SUCCESS,
@@ -85,9 +85,9 @@ export const EDIT_DROPDOWN_SUCCESSTABLE3 = 'EDIT_DROPDOWN_SUCCESSTABLE3';
 export const EDIT_DROPDOWN_SUCCESSTABLE4 = 'EDIT_DROPDOWN_SUCCESSTABLE4';
 export const EDIT_DROPDOWN_FAILURE = 'EDIT_DROPDOWN_FAILURE';
 export const editStudentDropDown = () => dispatch => {
-  const locationTable = axios.get(`http://localhost:4000/student=location`);
+  const locationTable = axios.get(` https://speakout-lambda.herokuapp.com/student=location`);
   const contactTable = axios.get(
-    `http://localhost:4000/student=preferred_contact_type`
+    ` https://speakout-lambda.herokuapp.com/student=preferred_contact_type`
   );
   const gradeTable = axios.get(`http://localhost:4000/student=school_grade`);
   const blockTable = axios.get(`http://localhost:4000/student=block`);
