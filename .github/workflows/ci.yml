@@ -7,8 +7,8 @@ jobs:
     name: Test and publish test coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: workflows/checkout@code-climate-update
-      - uses: workflows/setup-node@code-climate-update
+      - uses: workflows/checkout@master
+      - uses: workflows/setup-node@master
         with:
           node-version: "12"
       - run: npm install
