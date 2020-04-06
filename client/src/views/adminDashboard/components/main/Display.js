@@ -40,13 +40,21 @@ function Display({ navigation }) {
     } else if (navigation === 'family') {
       return (
         <>
+          <h2>Parents</h2>
           <Parents />
+          <h2>ParentCard</h2>
           <ParentCard />
+          <h2>ParentForm</h2>
           <ParentForm />
+          <h2>ParentInformation</h2>
           <ParentInfomation />
+          <h2>ParentRegistrationForm</h2>
           <ParentRegistrationForm />
+          <h2>ParentTable</h2>
           <ParentTable />
+          <h2>SearchParentTable</h2>
           <SearchParentTable />
+          <h2>StudentInfo</h2>
           <StudentInfo />
         </>
       )
