@@ -1,18 +1,17 @@
 import React from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
-import { Typography, Layout, Col, Row, Button } from 'antd';
+// import './UserSettings.scss';
+import { PrimaryButton } from '../../../styles/BtnStyles.js';
 
 const UserSettings = () => {
-  const { Title, Text } = Typography;
-  const { Content } = Layout;
   const { url } = useRouteMatch();
+  const history = useHistory();
 
   // Extracting User details from user's token
   const token = localStorage.getItem('token');
   const tokenData = JSON.parse(atob(token.split('.')[1]));
   console.log(tokenData);
   const { email, name } = tokenData;
-  const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,30 +19,20 @@ const UserSettings = () => {
   };
 
   return (
-    <Content style={{ margin: '1.8rem 0' }}>
-      <Row>
-        <Col>
-          <Title level={3}>Account Settings</Title>
-        </Col>
-      </Row>
-      <Row style={{ margin: '1.8rem 0' }}>
-        <Col span={1}>
-          <Text type="secondary">Name:</Text>
-        </Col>
-        <Col span={3}>{name}</Col>
-      </Row>
-      <Row style={{ margin: '1.8rem 0' }}>
-        <Col span={1}>
-          <Text type="secondary">Email:</Text>
-        </Col>
-        <Col span={3}>{email}</Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button onClick={handleSubmit}>Edit</Button>
-        </Col>
-      </Row>
-    </Content>
+    <div className="settings-container">
+      <h1>Review Settings</h1>
+      <div className="input-group">
+        <div className="input-row">
+          <label>Full Name:</label>
+          <p>{name}</p>
+        </div>
+        <div className="input-row">
+          <label>Email:</label>
+          <p>{email}</p>
+        </div>
+      </div>
+      <PrimaryButton onClick={handleSubmit}>Edit</PrimaryButton>
+    </div>
   );
 };
 
