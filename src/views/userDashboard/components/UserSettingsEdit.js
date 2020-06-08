@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import axiosWithAuth from '../../../utils/axiosWithAuth';
 import { PrimaryButton, SecondaryButton } from '../../../styles/BtnStyles.js';
+import './UserSettings.scss';
 
 const UserSettingsEdit = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -29,29 +30,31 @@ const UserSettingsEdit = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="settings-container">
+    <form onSubmit={handleSubmit(onSubmit)} className="edit-container">
       <h1>Edit Settings</h1>
-      <label htmlFor="name" className="label">
-        Full Name:
-      </label>
-      <input
-        type="text"
-        defaultValue={name}
-        name="name"
-        ref={register({ required: true, min: 2, maxLength: 100 })}
-        className="form-input"
-      />
-      <label htmlFor="email" className="label">
-        Email:
-      </label>
-      <input
-        type="email"
-        defaultValue={email}
-        name="email"
-        ref={register({ required: true })}
-        className="form-input"
-      />
-      <div className="button-div">
+      <div className="input-group">
+        <label htmlFor="name" className="label">
+          Full Name:
+        </label>
+        <input
+          type="text"
+          defaultValue={name}
+          name="name"
+          ref={register({ required: true, min: 2, maxLength: 100 })}
+          className="form-input"
+        />
+        <label htmlFor="email" className="label">
+          Email:
+        </label>
+        <input
+          type="email"
+          defaultValue={email}
+          name="email"
+          ref={register({ required: true })}
+          className="form-input"
+        />
+      </div>
+      <div className="btn-div">
         <SecondaryButton type="reset" onClick={handleCancel}>
           Cancel
         </SecondaryButton>

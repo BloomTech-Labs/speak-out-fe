@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
-// import './UserSettings.scss';
+import './UserSettings.scss';
 import { PrimaryButton } from '../../../styles/BtnStyles.js';
 
 const UserSettings = () => {
@@ -22,14 +22,10 @@ const UserSettings = () => {
     <div className="settings-container">
       <h1>Review Settings</h1>
       <div className="input-group">
-        <div className="input-row">
-          <label>Full Name:</label>
-          <p>{name}</p>
-        </div>
-        <div className="input-row">
-          <label>Email:</label>
-          <p>{email}</p>
-        </div>
+        <label>Full Name:</label>
+        <p>{name}</p>
+        <label>Email:</label>
+        <p>{email}</p>
       </div>
       <PrimaryButton onClick={handleSubmit}>Edit</PrimaryButton>
     </div>
